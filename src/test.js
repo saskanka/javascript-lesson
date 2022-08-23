@@ -12,7 +12,7 @@ const email = {
 const send = (option) =>{
     nodemailer.createTransport(email).sendMail(option, (error, info) =>{
         if (error) {
-            console.log("*** error:", error)
+            console.log("*** aaa error:", error)
         } else {
             console.log("*** info:", info)
             return info.response;
