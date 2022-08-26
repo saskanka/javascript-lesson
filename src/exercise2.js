@@ -43,14 +43,14 @@ console.log(closestTo100(1, 1));
 // e5
 
 const countChars = (str, char) =>
-    str.split('').filter(ch => ch === char).length;
+  str.split("").filter((ch) => ch === char).length;
 
 const contains2To4 = (str, char) =>
-    countChars(str, char) >= 2 && countChars(str, char) <=4;
+  countChars(str, char) >= 2 && countChars(str, char) <= 4;
 
-console.log("find occurrencies test")
+console.log("find occurrencies test");
 
-console.log(contains2To4('google', 'o'));
-console.log(contains2To4('goooogle', 'o'));
-console.log(contains2To4('gogle', 'o'));
-console.log(contains2To4('gooooogle' 'o'));
+console.log(contains2To4("google", "o"));
+console.log(contains2To4("goooogle", "o"));
+console.log(contains2To4("gogle", "o"));
+console.log(contains2To4("gooooogle", "o"));
