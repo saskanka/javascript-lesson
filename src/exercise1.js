@@ -44,22 +44,22 @@ console.log(moveCharsForward("abc"));
 console.log(moveCharsForward("z"));
 
 // E3 mod:  Replace every other character of a string with the
-//          previous alphabet. ***NEED HELP***
+//          previous alphabet.
 function moveCharsBackward(str) {
-  str.split("");
-  for (let i = 0; i < str.length; i += 2) {
-    str[i] = String.fromCharCode(str[i].charCodeAt(0) - 1);
+  let arr = str.split("");
+  for (let i = 0; i < arr.length; i += 2) {
+    arr[i] = String.fromCharCode(arr[i].charCodeAt(0) - 1);
   }
-  str.join("");
-  return str;
+  arr = arr.join("");
+  return arr;
 }
 
 const moveCharsBackward = (str) => {
-  str.split("");
-  for (let i = 0; i < str.length; i += 2) {
-    str[i] = String.fromCharCode(str[i].charCodeAt(0) - 1);
+  let arr = str.split("");
+  for (let i = 0; i < arr.length; i += 2) {
+    arr[i] = String.fromCharCode(arr[i].charCodeAt(0) - 1);
   }
-  str.join("");
+  return arr.join("");
 };
 
 console.log(moveCharsBackward("abcdef"));
@@ -271,15 +271,17 @@ console.log(replaceFirstDigit("Abcd1Abcde"));
 console.log(replaceFirstDigit("A123Abcde"));
 console.log(replaceFirstDigit("A1cd1Abcd1"));
 
-// E5 mod:  Same as E5. Self-made. ***NEED HELP***
+// E5 mod:  Same as E5. Self-made.
 const replaceToDollar = (str) => {
   arr = str.split("");
-  for (i = 1; i <= arr.length; i += 1) {
-    if (Number.isInteger(arr[i])) {
+  for (i = 0; i < arr.length; i += 1) {
+    console.log(arr[i]);
+    if (!isNaN(arr[i])) {
       arr[i] = "$";
-      i = array.length + 1;
+      break;
     }
   }
+
   return arr.join("");
 };
 
