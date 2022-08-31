@@ -1,5 +1,5 @@
 /*
-// javascript exercise revamped
+// JavaScript Exercise
 // Part 1
 // E1:  Check two numbers, return true if one of them is 100
 //      or if the sum is 100.
@@ -274,8 +274,7 @@ console.log(replaceFirstDigit("A1cd1Abcd1"));
 // E5 mod:  Same as E5. Self-made.
 const replaceToDollar = (str) => {
   arr = str.split("");
-  for (i = 0; i < arr.length; i += 1) {
-    console.log(arr[i]);
+  for (let i = 0; i < arr.length; i += 1) {
     if (!isNaN(arr[i])) {
       arr[i] = "$";
       break;
@@ -287,4 +286,211 @@ const replaceToDollar = (str) => {
 
 console.log(replaceToDollar("1dollarsign"));
 console.log(replaceToDollar("dollar1sign"));
+
+/////////////////////////////////////////////////////////////////
+// Part 4
+// E1:  Report if a given year is a leap year.
+const isLeapYear = (year) => year % 4 === 0;
+
+console.log(isLeapYear(2000));
+console.log(isLeapYear(2001));
+console.log(isLeapYear(2002));
+console.log(isLeapYear(2003));
+console.log(isLeapYear(2004));
+console.log(isLeapYear(2999));
+
+// E1 mod:  Count number of days of a given year. *** NEED HELP *** INFINITE LOOP ***
+// const countDays = (year) => {
+//   let i = 1;
+//   date = new Date(year, 0, i);
+//   while (date.getFullYear() === year) {
+//     i++;
+//   }
+//   return i;
+// };
+
+// console.log(countDays(2022));
+
+// E1 mod:  Check if given year is a leap year by checking if Feb/29 exists.
+const isLeapYear2 = (year) => {
+  date = new Date(year, 1, 29);
+  return date.getMonth() === 1;
+};
+
+console.log(isLeapYear2(2012));
+console.log(isLeapYear2(2013));
+console.log(isLeapYear2(2014));
+console.log(isLeapYear2(2015));
+console.log(isLeapYear2(2016));
+
+// E2:  Compare two objects to determine if the first one contains the same
+//      properties as the second one.
+const objA = { a: 1, b: 2, c: 1 };
+const objB = { a: 1, b: 1, c: 1 };
+const objC = { a: 1, b: 1, d: 1 };
+
+const objectsEqual = (a, b) => Object.keys(a).every((key) => b[key]);
+
+console.log(objectsEqual(objA, objB));
+console.log(objectsEqual(objA, objC));
+console.log(objectsEqual(objB, objC));
+
+// E2 mod:  need more objects practice
+
+// E3:  Convert a comma-separated values (CSV) string to a 2D array.
+const parseCSV = (csvString) =>
+  csvString.split("\n").map((row) => row.split(","));
+
+const str = `abc,def,ghi
+jkl,mno,pqr
+stu,vwx,yza`;
+
+console.log(parseCSV(str));
+
+// E3 mod:  Remove commas from a CSV string and create a 2D array.
+const parseCSV2 = (csvString) =>
+  csvString.split("\n").map((row) =>
+    row
+      .split("")
+      .filter((char) => char != ",")
+      .join("")
+  );
+
+console.log(parseCSV2(str));
+
+// E4:  Generate a random hexadecimal color code.
+const getRandomHexNumber = () => Math.floor(Math.random() * 16).toString(16);
+
+const getRandomHexColor = () =>
+  "#" + Array.from({ length: 6 }).map(getRandomHexNumber).join("");
+
+console.log(getRandomHexColor());
+console.log(getRandomHexColor());
+console.log(getRandomHexColor());
+
+// E4 mod:  Generate a 3-digit random octal literal.
+const getRandomOctNumber = () => Math.floor(Math.random() * 8).toString(8);
+
+const getRandomOctLit = () =>
+  "0o" + Array.from({ length: 3 }).map(getRandomOctNumber).join("");
+
+console.log(getRandomOctLit());
+console.log(getRandomOctLit());
+console.log(getRandomOctLit());
+
+// E5:  Return true if the provided predicate function returns true for all elements,
+//      false otherwise.
+const isEveryElem = (arr, fn) => {
+  for (let i = 0; i < arr.length; i += 1) {
+    if (!fn(arr[i])) {
+      return false;
+    }
+  }
+  return true;
+};
+
+console.log(isEveryElem([1, 2, 3, 4, 5], (x) => x > 0));
+console.log(isEveryElem([1, 2, 3, 4, 5], (x) => x > 3));
+
+// E5 mod:  Same as E5. Return which array does not satisfy the condition.
+const isEveryElem2 = (arr, fn) => {
+  let TorF = true;
+  for (let i = 0; i < arr.length; i++) {
+    if (!fn(arr[i])) {
+      console.log(
+        `Number in position ${i + 1} does not satisfy the condition.`
+      );
+      TorF = false;
+    }
+  }
+  return TorF;
+};
+
+console.log(isEveryElem2([1, 2, 3, 4, 5], (x) => x > 0));
+console.log(isEveryElem2([1, 2, 3, 4, 5], (x) => x > 3));
+
+/////////////////////////////////////////////////////////////////
+// Part 5
+// E1:  Return a passed string with letters in alphabetical order.
+const alphabeticalOrder = (str) =>
+  str
+    .split("")
+    .sort((a, b) => (a > b ? 1 : -1))
+    .join("");
+
+console.log(alphabeticalOrder("webmaster"));
+console.log(alphabeticalOrder("javascript"));
+
+// E1 mod: Return a passed string in reverse alphabetical order.
+const reverseAOrder = (str) =>
+  str
+    .split("")
+    .sort((a, b) => (a < b ? 1 : -1))
+    .join("");
+
+console.log(reverseAOrder("webmaster"));
+console.log(reverseAOrder("javascript"));
+
+// E2:  Count the number of vowels or a specific letter in a given string.
+const countLetters = (str, letters = ["a", "e", "i", "o", "u"]) =>
+  str.split("").filter((s) => letters.indexOf(s) > -1).length;
+
+console.log(countLetters("abcde"));
+console.log(countLetters("abcde", ["c"]));
+
+// E2 mod:  Count the number of consonants
+const countLetters2 = (str, letters = ["a", "e", "i", "o", "u"]) =>
+  str.length - str.split("").filter((s) => letters.indexOf(s) > -1).length;
+
+console.log(countLetters2("abcde"));
+
+// E3:  Convert an amount to coins.
+const countCoins = (money, coins = [25, 10, 5, 2, 1]) => {
+  const totalCoins = [];
+  for (let i = 0; i < coins.length; i += 1) {
+    const thisCoinNum = Math.floor(money / coins[i]);
+    for (let y = 0; y < thisCoinNum; y += 1) {
+      totalCoins.push(coins[i]);
+    }
+    money -= coins[i] * thisCoinNum;
+  }
+  return totalCoins;
+};
+
+console.log(countCoins(46));
+
+// E3 mod:  exercise too unique.
+
+// E4:  Extract unique characters from a string.
+const getUniqueChars = (str) =>
+  str
+    .split("")
+    .filter((item, index, arr) => arr.slice(index + 1).indexOf(item) === -1);
+
+console.log(getUniqueChars("aaaabbbccc"));
+
+// E4 mod:  Same as E4.
+const getUniqueChars2 = (str) => [...new Set(str.split(""))];
+
+console.log(getUniqueChars2("aaaabbbccc"));
+
+// E5:  Find the first not-repeated character from a string.
+const getNonRepeatedChars = (str) =>
+  str
+    .split("")
+    .filter(
+      (item, index, arr) =>
+        arr.filter((arrItem) => arrItem === item).length === 1
+    );
+
+console.log(getNonRepeatedChars("abacddbec"));
+
+// E5 mod:  Same as E5.
+const getNonRepeatedChars2 = (str) => {
+  let uniqueString = [...new Set(str.split(""))];
+  str.split("").filter(uniqueString).join("");
+};
+
+console.log(getNonRepeatedChars("abacddbec"));
+console.log(getNonRepeatedChars("abcdef"));
 */
