@@ -1,7 +1,8 @@
 {
   "scripts": {
     "exercise1": "node src/exercise1.js",
-    "exercise2": "node src/exercise2.js"
+    "exercise2": "node src/exercise2.js",
+    "exercise3": "node src/exercise3.js"
   },
   "dependencies": {
     "nodemailer": "^6.7.8"
