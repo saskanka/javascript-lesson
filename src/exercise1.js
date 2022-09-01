@@ -299,17 +299,22 @@ console.log(isLeapYear(2003));
 console.log(isLeapYear(2004));
 console.log(isLeapYear(2999));
 
-// E1 mod:  Count number of days of a given year. *** NEED HELP *** INFINITE LOOP ***
-// const countDays = (year) => {
-//   let i = 1;
-//   date = new Date(year, 0, i);
-//   while (date.getFullYear() === year) {
-//     i++;
-//   }
-//   return i;
-// };
+// E1 mod:  Count number of days of a given year.
+const countDays = (year) => {
+  let i = 1;
+  let date = new Date(year, 0, i);
+  while (date.getFullYear() === year) {
+    i++;
+    date = new Date(year, 0, i);
+  }
+  return i - 1;
+};
 
-// console.log(countDays(2022));
+console.log(countDays(2020));
+console.log(countDays(2021));
+console.log(countDays(2022));
+console.log(countDays(2023));
+console.log(countDays(2024));
 
 // E1 mod:  Check if given year is a leap year by checking if Feb/29 exists.
 const isLeapYear2 = (year) => {
